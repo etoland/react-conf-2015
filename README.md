@@ -81,7 +81,22 @@ No canvas libraries, no tldraw dependency. The spatial engine is built from scra
 
 ## What I'd do with more time
 
-- A draggable Now line — click and drag the red line directly on the canvas instead of using the sidebar scrubber. The most tldraw-DNA interaction I didn't get to.
-- A venue map layer showing the physical Facebook HQ floor plan with a "You Are Here" marker.
-- Real scan tracking via a lightweight backend — right now connections are simulated, but the interaction model is complete and ready to wire up.
-- Persist saved talks and connections to localStorage so your session survives a refresh.
+**Conflict detector**
+
+Let attendees star talks they want to attend, then flag when two starred talks overlap in time. The product opinion behind this: attendees shouldn't have to do the mental arithmetic themselves — the tool should surface the conflict and force a conscious choice.
+
+**Talk duration tooltip on hover**
+
+On mouse hover, a small floating label appears showing the talk's time window — `10:00am — 10:30am · 30 min`. Positioned using the `worldToScreen` conversion so it follows the block correctly at any zoom level. Small detail, but the kind of thing that makes a tool feel finished.
+
+**Venue map layer**
+
+A floor plan of Facebook HQ overlaid on the canvas showing where each stage physically is, with a "You Are Here" marker. The most spatial feature on the list and the one most directly inspired by tldraw's DNA.
+
+**Real scan tracking**
+
+Right now connections are simulated. A lightweight backend — even just a Supabase table — would make the QR feature genuinely useful. The interaction model is complete and ready to wire up.
+
+**Persist state to localStorage**
+
+Your saved talks, connections, and LinkedIn URL should survive a page refresh. One `useEffect` per piece of state.
