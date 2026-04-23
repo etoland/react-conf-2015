@@ -38,7 +38,7 @@ The biggest unsolved problem at conferences isn't the schedule — it's the hall
 
 **The Minimap**
 
-This one is specifically for tldraw. A minimap showing your current viewport position within the world is a core spatial navigation pattern — it's in tldraw itself. Building it here was a deliberate signal that I understand the product and the design space.
+A minimap showing your current viewport position within the world is a core spatial navigation pattern. Building it here was a deliberate signal that I understand the product and the design space.
 
 ---
 
@@ -48,9 +48,9 @@ This one is specifically for tldraw. A minimap showing your current viewport pos
 
 Everything spatial in the app derives from one formula:
 
-```
-worldX = (screenX - pan.x) / zoom
-screenX = worldX * zoom + pan.x
+```ts
+worldX  = (screenX - pan.x) / zoom   // screen → world
+screenX = worldX * zoom + pan.x       // world → screen
 ```
 
 Talk positions are calculated from `startTime` in minutes-from-midnight and a `PIXELS_PER_MINUTE` constant. This means the layout is entirely data-driven — change a talk's start time and it moves on the canvas automatically.
@@ -75,7 +75,7 @@ Text opacity is tied to zoom level with separate thresholds for speaker names an
 - Tailwind CSS
 - qrcode.react for QR generation
 
-No canvas libraries, no tldraw dependency. The spatial engine is built from scratch using DOM transforms — partly as a challenge, partly because understanding it from first principles is the point.
+The spatial engine is built from scratch using DOM transforms — partly as a challenge, partly because understanding it from first principles is the point. I built it this way to demonstrate my understanding of coordinate math and DOM transforms, which would allow me to contribute more effectively to tldraw's own core engine.
 
 ---
 
